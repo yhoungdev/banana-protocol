@@ -63,3 +63,60 @@ No single fruit tells you anything useful on its own.
 
 ## 📐 Architecture (High Level)
 
+- No master node  
+- No global index  
+- Discovery happens locally  
+
+---
+
+## 🛠️ Tech Stack (Planned)
+
+- **Language:** Rust  
+- **Encoding:** Reed–Solomon / Fountain Codes  
+- **Networking:** QUIC / TCP / UDP (TBD)  
+- **Discovery:** mDNS / gossip-based peer discovery  
+- **Storage:** Content-addressed fragments  
+
+---
+
+## 🚀 Use Cases
+
+- Local campus or community storage
+- Disaster-resilient data sharing
+- Low-bandwidth or offline environments
+- Edge computing clusters
+- Research & distributed systems learning
+
+---
+
+## 🆚 Similar Systems
+
+| System       | Difference                         |
+|--------------|------------------------------------|
+| IPFS         | Internet-oriented, global           |
+| Storj        | Central coordination                |
+| Tahoe-LAFS   | Heavier setup                       |
+| **PALM**     | Local-first, lightweight, no servers|
+
+---
+
+## 📍 Project Status
+
+🚧 **Early design / prototype phase**
+
+- [ ] Fragment encoding  
+- [ ] Local peer discovery  
+- [ ] Fragment placement strategy  
+- [ ] Recovery mechanism  
+- [ ] CLI interface  
+
+---
+
+## 🤝 Contributing
+
+Contributions, ideas, and discussions are welcome.  
+This project is exploratory and research-driven.
+
+
+
+
