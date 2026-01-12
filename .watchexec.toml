@@ -1,0 +1,15 @@
+# Alternative fast reload config using watchexec
+# Install with: brew install watchexec
+
+[default]
+# Watch these directories
+paths = ["src/", "Cargo.toml"]
+
+# Ignore these
+ignore = ["target/", ".git/"]
+
+# Clear screen on reload
+clear_screen = true
+
+# Restart on changes
+on-busy-update = "restart"
