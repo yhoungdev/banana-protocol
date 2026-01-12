@@ -1,0 +1,4 @@
+[alias]
+dev = "watch -x run"
+dev-create = "watch -x 'run -- create-pool'"
+dev-discover = "watch -x 'run -- discover-pools'"
