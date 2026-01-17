@@ -7,7 +7,6 @@ import {
   Settings,
   type LucideIcon,
 } from "lucide-react"
-import type { NavItemId } from "@/lib/constants"
 
 const iconMap: Record<string, LucideIcon> = {
   LayoutGrid,
@@ -17,7 +16,6 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 interface NavItemProps {
-  id: NavItemId
   label: string
   icon: string
   path: string
@@ -26,7 +24,6 @@ interface NavItemProps {
 }
 
 export function NavItem({
-  id,
   label,
   icon,
   path,

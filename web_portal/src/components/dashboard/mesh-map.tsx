@@ -3,10 +3,9 @@ import { Badge } from "@/components/ui/badge"
 
 interface MeshMapProps {
   nodeId: string
-  peerLocations?: { lat: number; lng: number }[]
 }
 
-export function MeshMap({ nodeId, peerLocations = [] }: MeshMapProps) {
+export function MeshMap({ nodeId }: MeshMapProps) {
   return (
     <div>
       <div className="flex items-center justify-between mb-3">

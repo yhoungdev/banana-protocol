@@ -1,1 +1,2 @@
-pub mod encoding
+pub mod encoding;
+pub mod decoding;
