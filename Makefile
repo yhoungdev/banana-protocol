@@ -1,4 +1,26 @@
-.PHONY: dev-create dev-discover dev-join create discover join build test check install-tools
+.PHONY: dev-create dev-discover dev-join create discover join build test check install-tools daemon dev-web build-web
+
+# Start daemon with web UI
+daemon:
+	@cargo run -- daemon --web-port 3000
+
+dev-daemon:
+	@cargo watch -q -c -x 'run -- daemon --web-port 3000'
+
+# Web portal commands
+dev-web:
+	@cd web_portal && pnpm dev
+
+build-web:
+	@echo "Building web portal..."
+	@cd web_portal && pnpm install && pnpm build
+	@echo "✓ Web portal built"
+
+# Full build (web + rust)
+build-all: build-web
+	@echo "Building Rust binary..."
+	@cargo build --release
+	@echo "✓ Full build complete"
 
 # Fast development with auto-reload
 dev-create:
