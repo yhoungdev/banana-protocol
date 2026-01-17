@@ -1,13 +1,14 @@
 import { cn } from "@/lib/utils"
-import type { ReactNode } from "react"
+import type { ReactNode, MouseEventHandler } from "react"
 
 interface CardProps {
   children: ReactNode
   className?: string
   glow?: boolean
+  onClick?: MouseEventHandler<HTMLDivElement>
 }
 
-export function Card({ children, className, glow }: CardProps) {
+export function Card({ children, className, glow, onClick }: CardProps) {
   return (
     <div
       className={cn(
@@ -15,6 +16,7 @@ export function Card({ children, className, glow }: CardProps) {
         glow && "border-[#E5FF00]/30",
         className
       )}
+      onClick={onClick}
     >
       {children}
     </div>
