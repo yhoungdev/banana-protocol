@@ -1,0 +1,70 @@
+import { cn } from "@/lib/utils"
+import {
+  LayoutGrid,
+  FolderClosed,
+  Users,
+  Settings,
+  type LucideIcon,
+} from "lucide-react"
+import type { NavItemId } from "@/lib/constants"
+
+const iconMap: Record<string, LucideIcon> = {
+  LayoutGrid,
+  FolderClosed,
+  Users,
+  Settings,
+}
+
+interface NavItemProps {
+  id: NavItemId
+  label: string
+  icon: string
+  isActive: boolean
+  onClick: (id: NavItemId) => void
+  variant?: "side" | "bottom"
+}
+
+export function NavItem({
+  id,
+  label,
+  icon,
+  isActive,
+  onClick,
+  variant = "bottom",
+}: NavItemProps) {
+  const Icon = iconMap[icon]
+
+  if (variant === "side") {
+    return (
+      <button
+        type="button"
+        onClick={() => onClick(id)}
+        className={cn(
+          "flex items-center gap-3 w-full px-4 py-3 rounded-xl transition-all",
+          isActive
+            ? "bg-[#E5FF00]/10 text-[#E5FF00] border border-[#E5FF00]/30"
+            : "text-gray-400 hover:bg-[#2A2A2A] hover:text-white"
+        )}
+      >
+        <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
+        <span className="font-medium">{label}</span>
+      </button>
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => onClick(id)}
+      className={cn(
+        "flex flex-col items-center gap-1 py-2 px-4 transition-colors",
+        isActive ? "text-[#E5FF00]" : "text-gray-500 hover:text-gray-300"
+      )}
+    >
+      <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
+      <span className="text-xs font-medium uppercase tracking-wider">
+        {label}
+      </span>
+    </button>
+  )
+}
