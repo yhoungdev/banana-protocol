@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { Link } from "@tanstack/react-router"
 import {
   LayoutGrid,
   FolderClosed,
@@ -19,8 +20,8 @@ interface NavItemProps {
   id: NavItemId
   label: string
   icon: string
+  path: string
   isActive: boolean
-  onClick: (id: NavItemId) => void
   variant?: "side" | "bottom"
 }
 
@@ -28,17 +29,16 @@ export function NavItem({
   id,
   label,
   icon,
+  path,
   isActive,
-  onClick,
   variant = "bottom",
 }: NavItemProps) {
   const Icon = iconMap[icon]
 
   if (variant === "side") {
     return (
-      <button
-        type="button"
-        onClick={() => onClick(id)}
+      <Link
+        to={path}
         className={cn(
           "flex items-center gap-3 w-full px-4 py-3 rounded-xl transition-all",
           isActive
@@ -48,14 +48,13 @@ export function NavItem({
       >
         <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
         <span className="font-medium">{label}</span>
-      </button>
+      </Link>
     )
   }
 
   return (
-    <button
-      type="button"
-      onClick={() => onClick(id)}
+    <Link
+      to={path}
       className={cn(
         "flex flex-col items-center gap-1 py-2 px-4 transition-colors",
         isActive ? "text-[#E5FF00]" : "text-gray-500 hover:text-gray-300"
@@ -65,6 +64,6 @@ export function NavItem({
       <span className="text-xs font-medium uppercase tracking-wider">
         {label}
       </span>
-    </button>
+    </Link>
   )
 }

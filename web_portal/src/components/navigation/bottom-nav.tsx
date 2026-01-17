@@ -1,12 +1,10 @@
-import { NAV_ITEMS, type NavItemId } from "@/lib/constants"
+import { NAV_ITEMS } from "@/lib/constants"
+import { useRouterState } from "@tanstack/react-router"
 import { NavItem } from "./nav-item"
 
-interface BottomNavProps {
-  activeTab: NavItemId
-  onTabChange: (id: NavItemId) => void
-}
-
-export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
+export function BottomNav() {
+  const routerState = useRouterState()
+  const currentPath = routerState.location.pathname
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 border-t border-[#2A2A2A] bg-[#0D0D0D]/95 backdrop-blur-sm md:hidden">
@@ -15,8 +13,7 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
           <NavItem
             key={item.id}
             {...item}
-            isActive={activeTab === item.id}
-            onClick={onTabChange}
+            isActive={currentPath === item.path}
             variant="bottom"
           />
         ))}

@@ -1,12 +1,10 @@
-import { NAV_ITEMS, type NavItemId } from "@/lib/constants"
+import { NAV_ITEMS } from "@/lib/constants"
+import { useRouterState } from "@tanstack/react-router"
 import { NavItem } from "./nav-item"
 
-interface SideNavProps {
-  activeTab: NavItemId
-  onTabChange: (id: NavItemId) => void
-}
-
-export function SideNav({ activeTab, onTabChange }: SideNavProps) {
+export function SideNav() {
+  const routerState = useRouterState()
+  const currentPath = routerState.location.pathname
 
   return (
     <aside className="hidden md:flex flex-col w-56 border-r border-[#2A2A2A] bg-[#0D0D0D] p-4">
@@ -24,8 +22,7 @@ export function SideNav({ activeTab, onTabChange }: SideNavProps) {
           <NavItem
             key={item.id}
             {...item}
-            isActive={activeTab === item.id}
-            onClick={onTabChange}
+            isActive={currentPath === item.path}
             variant="side"
           />
         ))}
