@@ -1,5 +1,7 @@
 pub mod cli;
 pub mod coding;
+pub mod constant;
+pub mod helpers;
 pub mod pool;
 pub mod web;
 

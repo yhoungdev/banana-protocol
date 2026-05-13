@@ -16,9 +16,6 @@ pub enum Commands {
 
         #[arg(short, long, default_value_t = 5000)]
         node_port: u16,
-
-        #[arg(long, default_value_t = true)]
-        open_browser: bool,
     },
 
     CreatePool {

@@ -1,6 +1,8 @@
 use axum::{extract::State, response::Json};
-use serde_json::{json, Value};
+use serde_json::{Value, json};
 use std::sync::Arc;
+
+use crate::helpers::misc::format_storage;
 
 use super::state::{AppState, NetworkStats, NodeInfo, PeerInfo, PoolInfo};
 
@@ -38,18 +40,4 @@ pub async fn health_check() -> Json<Value> {
         "status": "ok",
         "version": env!("CARGO_PKG_VERSION")
     }))
-}
-
-fn format_storage(bytes: u64) -> String {
-    const TB: u64 = 1_099_511_627_776;
-    const GB: u64 = 1_073_741_824;
-    const MB: u64 = 1_048_576;
-
-    if bytes >= TB {
-        format!("{:.1} TB", bytes as f64 / TB as f64)
-    } else if bytes >= GB {
-        format!("{:.1} GB", bytes as f64 / GB as f64)
-    } else {
-        format!("{:.1} MB", bytes as f64 / MB as f64)
-    }
 }
